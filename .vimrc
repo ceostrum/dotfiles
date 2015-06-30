@@ -329,7 +329,6 @@ noremap K 3k
 nnoremap x "_x
 nnoremap s :w<cr>
 nnoremap S :sp<cr>
-nnoremap q <nop>
 nnoremap Q :q<cr>
 nnoremap C :call ToggleQuickfix()<cr>
 
@@ -344,8 +343,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 vnoremap <c-j> :join<cr>
 vnoremap <c-y> "+y
 noremap <c-p> "+p
-set pastetoggle=<F10>
-inoremap <c-p> <F10><C-r>+<F10>
+set pastetoggle=<F9>
+inoremap <c-p> <F9><C-r>+<F9>
 inoremap <c-h> <bs>
 
 cnoremap <c-p> <c-r>+
@@ -366,35 +365,23 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Use sane regexes
-" nnoremap <leader>/ /\v
-" vnoremap <leader>/ /\v
-"
-" " Use :Subvert search
-" nnoremap <leader>// :S /
-" vnoremap <leader>// :S /
-"
-" " Use regular replace
-" nnoremap <leader>s :%s /
-" vnoremap <leader>s :%s /
-"
-" " Use :Subvert replace
-" nnoremap <leader>S :%S /
-" vnoremap <leader>S :%S /
+nnoremap <leader>/ /\v
+vnoremap <leader>/ /\v
+
+" Use :Subvert search
+nnoremap <leader>// :S /
+vnoremap <leader>// :S /
 
 nnoremap <space> :NERDTreeToggle<cr>
-nnoremap <leader><space> <nop>
 nnoremap <leader>. :NERDTreeFind<cr>
-if exists(":Tabularize")
-    nnoremap <leader>a= :Tab /=<CR>
-    vnoremap <leader>a= :Tab /=<CR>
-    nnoremap <leader>a: :Tab /:\zs<CR>
-    vnoremap <leader>a: :Tab /:\zs<CR>
-endif
+nnoremap <leader>a= :Tab /=<CR>
+vnoremap <leader>a= :Tab /=<CR>
+nnoremap <leader>a: :Tab /:\zs<CR>
+vnoremap <leader>a: :Tab /:\zs<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>e :CtrlP .<cr>
 nnoremap <leader>g :TagbarToggle<CR>
 nnoremap <leader>h :nohlsearch<CR>
-nnoremap <leader>i <nop>
 nnoremap <leader>ic :call clearmatches()<CR>:noh<CR>
 nnoremap <silent> <leader>i1 :call HiInterestingWord(1)<cr>
 nnoremap <silent> <leader>i2 :call HiInterestingWord(2)<cr>
@@ -402,14 +389,18 @@ nnoremap <silent> <leader>i3 :call HiInterestingWord(3)<cr>
 nnoremap <silent> <leader>i4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>i5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>i6 :call HiInterestingWord(6)<cr>
-nnoremap <leader>j <nop>
 nnoremap <leader>m :MaximizerToggle<CR>
 nnoremap <leader>n :call RenameFile()<cr>
-nnoremap <leader>o <nop>
-nnoremap <leader>p <nop>
 nnoremap <leader>q :qall
 nnoremap <silent> <leader>r :e!<cr>
-nnoremap <silent> <leader>s <nop>
+" Use regular replace
+nnoremap <leader>s :%s/
+vnoremap <leader>s :s/
+
+" Use :Subvert replace
+nnoremap <leader>S :%S /
+vnoremap <leader>S :%S /
+
 nnoremap <leader>t :CtrlPTag<CR>
 " session management
 " let g:session_directory = "~/.vim/session"
@@ -423,10 +414,6 @@ nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>u :GundoToggle<cr>
 nnoremap <leader>V :source ~/.vimrc<cr>
 nnoremap <leader>v :e ~/.vimrc<cr>
-nnoremap <leader>w <nop>
-nnoremap <leader>x <nop>
-nnoremap <leader>y <nop>
-nnoremap <leader>z <nop>
 nnoremap <leader><leader>s :Ag <Space>-G="*"<S-Left><Left>
 nnoremap <leader><leader>c :Ag <Space>-G="*.(css\|scss)" app<S-Left><S-Left><Left>
 nnoremap <leader><leader>j :Ag <Space>-G="*.(js\|coffee)" app<S-Left><S-Left><Left>
