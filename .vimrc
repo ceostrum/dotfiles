@@ -11,6 +11,10 @@ filetype off
 set rtp+=~/.vim/bundle/vundle.vim
 call vundle#begin()
 
+" Update command:
+" vim +PluginInstall +qall
+" :PluginInstall
+
 " core plugins
 Plugin 'gmarik/vundle.vim'
 Plugin 'flazz/vim-colorschemes'
@@ -41,6 +45,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 " autocomplete
 Plugin 'shougo/neocomplete'
@@ -292,6 +298,9 @@ let g:EasyMotion_smartcase = 1
 " Gundo
 let g:gundo_close_on_revert = 1
 
+" vim-notes
+let g:notes_directories = ['~/dev/ceostrum/journal']
+
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags ts=2 sts=2 sw=2
@@ -372,12 +381,50 @@ vnoremap <leader>/ /\v
 nnoremap <leader>// :S /
 vnoremap <leader>// :S /
 
+" Use regular replace
+nnoremap <leader>s :%s/
+vnoremap <leader>s :s/
+
+" Use :Subvert replace
+nnoremap <leader>S :%S /
+vnoremap <leader>S :%S /
+
+" vim-notes
+nnoremap <leader>jj :split note:journal<cr>
+nnoremap <leader>n  :Note<space>
+nnoremap <leader>ns :SearchNotes<space>//<left>
+
+nnoremap <leader>jd :call Insert_JHeader()<cr>
+function! Insert_JHeader ()
+    let date = strftime ("%A, %d %B %Y")
+    let line = "================================================================================"
+
+    call append (line (".") - 1, "")
+    call append (line (".") - 1, line)
+    call append (line (".") - 1, date)
+    call append (line (".") - 1, line)
+    call append (line (".") - 1, "")
+
+    exec "norm \<up>^"
+    startinsert
+endfunction
+
+" session management
+" let g:session_directory = "~/.vim/session"
+" let g:session_autoload = "no"
+" let g:session_autosave = "no"
+" let g:session_command_aliases = 1
+" nnoremap <leader>so :OpenSession
+" nnoremap <leader>ss :SaveSession
+" nnoremap <leader>sd :DeleteSession<CR>
+" nnoremap <leader>sc :CloseSession<CR>
+
 nnoremap <space> :NERDTreeToggle<cr>
 nnoremap <leader>. :NERDTreeFind<cr>
-nnoremap <leader>a= :Tab /=<CR>
-vnoremap <leader>a= :Tab /=<CR>
-nnoremap <leader>a: :Tab /:\zs<CR>
-vnoremap <leader>a: :Tab /:\zs<CR>
+nnoremap <leader>a= :Tabularize /=<CR>
+vnoremap <leader>a= :Tabularize /=<CR>
+nnoremap <leader>a: :Tabularize /:\zs<CR>
+vnoremap <leader>a: :Tabularize /:\zs<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>e :CtrlP .<cr>
 nnoremap <leader>g :TagbarToggle<CR>
@@ -390,27 +437,10 @@ nnoremap <silent> <leader>i4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>i5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>i6 :call HiInterestingWord(6)<cr>
 nnoremap <leader>m :MaximizerToggle<CR>
-nnoremap <leader>n :call RenameFile()<cr>
+" nnoremap <leader>n :call RenameFile()<cr>
 nnoremap <leader>q :qall
 nnoremap <silent> <leader>r :e!<cr>
-" Use regular replace
-nnoremap <leader>s :%s/
-vnoremap <leader>s :s/
-
-" Use :Subvert replace
-nnoremap <leader>S :%S /
-vnoremap <leader>S :%S /
-
 nnoremap <leader>t :CtrlPTag<CR>
-" session management
-" let g:session_directory = "~/.vim/session"
-" let g:session_autoload = "no"
-" let g:session_autosave = "no"
-" let g:session_command_aliases = 1
-" nnoremap <leader>so :OpenSession
-" nnoremap <leader>ss :SaveSession
-" nnoremap <leader>sd :DeleteSession<CR>
-" nnoremap <leader>sc :CloseSession<CR>
 nnoremap <leader>u :GundoToggle<cr>
 nnoremap <leader>V :source ~/.vimrc<cr>
 nnoremap <leader>v :e ~/.vimrc<cr>
