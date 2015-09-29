@@ -20,51 +20,46 @@ Plugin 'gmarik/vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 
 " main plugins
-Plugin 'bling/vim-airline'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'godlygeek/tabular'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'jeetsukumaran/vim-filebeagle'
-Plugin 'kien/ctrlp.vim'
-Plugin 'lokaltog/vim-easymotion'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'majutsushi/tagbar'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'sjl/gundo.vim'
-Plugin 'szw/vim-maximizer'
-Plugin 'thinca/vim-visualstar'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
+Plugin 'bling/vim-airline'              " status line
+Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
+Plugin 'godlygeek/tabular'              " alignment
+Plugin 'henrik/vim-indexed-search'      " i of x in searches
+Plugin 'lokaltog/vim-easymotion'        " vim motions on speed
+Plugin 'ludovicchabant/vim-gutentags'   " auto tag generation
+Plugin 'majutsushi/tagbar'              " tag side bar
+Plugin 'ntpeters/vim-better-whitespace' " auto whitespace
+Plugin 'rking/ag.vim'                   " ag searching
+Plugin 'scrooloose/nerdtree'            " nerdtree
+Plugin 'scrooloose/syntastic'           " syntax checking
+Plugin 'sheerun/vim-polyglot'           " language pack
+Plugin 'sjl/gundo.vim'                  " undo manager
+Plugin 'szw/vim-maximizer'              " split maximizer
+Plugin 'tpope/vim-abolish'              " smart search/replace
+Plugin 'tpope/vim-commentary'           " comment stuff
+Plugin 'tpope/vim-dispatch'             " background runner
+Plugin 'tpope/vim-endwise'              " add end's in Ruby
+Plugin 'tpope/vim-fugitive'             " git wrapper
+Plugin 'tpope/vim-repeat'               " repeat plugin commands
+Plugin 'tpope/vim-surround'             " surround objects
+Plugin 'tpope/vim-unimpaired'           " bracket mappings [<space>, ]<space>, etc
+Plugin 'xolox/vim-misc'                 " xolox req
+Plugin 'xolox/vim-notes'                " note taking
 
 " autocomplete
-Plugin 'shougo/neocomplete'
-
-" snippets
-Plugin 'shougo/neosnippet'
-Plugin 'shougo/neosnippet-snippets'
+Plugin 'valloric/youcompleteme'         " omni complete
+Plugin 'ervandew/supertab'              " tab completion in insert
+Plugin 'sirver/ultisnips'               " snippet tool
+Plugin 'honza/vim-snippets'             " snippets
 
 " investigate
+" Plugin 'deris/vim-shot-f'
+" Plugin 'vimwiki/vimwiki'
+" Plubin 'mattn/calendar-vim'
 " Plugin 'wellle/targets'
 " Plugin 'jeetsukumaran/vim-markology'
 " Plugin 'jeetsukumaran/vim-gazetteer'
-
-" archive
-" Plugin 'valloric/youcompleteme'
-" Plugin 'sirver/ultisnips'
-" Plugin 'honza/vim-snippets'
-" Plugin 'tpope/vim-dispatch'
+" Plugin 'TaskList.vim'
+" map <Leader>to :TaskList<CR>
 
 call vundle#end()
 filetype plugin indent on
@@ -111,7 +106,7 @@ set infercase
 set laststatus=2
 set lazyredraw
 set nowrap
-set number
+set relativenumber
 set numberwidth=4
 set scrolljump=5
 set scrolloff=3
@@ -150,10 +145,8 @@ set backup
 set backupdir=~/.vim/tmp/backup//
 set backupskip=/tmp/*,/private/tmp/*"
 set directory=~/.vim/tmp/swap//
-" set nobackup
 set noswapfile
 set undodir=~/.vim/tmp/undo//
-" set nowritebackup
 set writebackup
 
 " persist (g)undo tree between sessions
@@ -192,11 +185,9 @@ let g:airline#extensions#hunks#non_zero_only   =  1 " git gutter
 
 " ctrlp
 " let g:ctrlp_user_command = 'find %s -type f'
-" if executable('/home/costrum/bin/ag')
 set grepprg=ag\ --nogroup\ --nocolor\ --column
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-" endif
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_switch_buffer = 'e'
@@ -228,11 +219,6 @@ let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
 
-" YouCompleteMe
-"let g:ycm_key_detailed_diagnostics = ''
-"let g:ycm_key_invoke_completion = ''
-"let g:ycm_complete_in_strings=0
-
 " tagbar
 let g:tagbar_autofocus=1
 let g:tagbar_compact=1
@@ -250,46 +236,23 @@ let g:surround_33 = "```\r```"
 " ag
 let g:agprg="/home/costrum/bin/ag --nogroup --column"
 
-" neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_camel_case = 1
-let g:neocomplete#enable_smart_case = 1
-" Default # of completions is 100, that's crazy.
-let g:neocomplete#max_list = 10
-" Set minimum syntax keyword length.
-let g:neocomplete#auto_completion_start_length = 3
-" Plugin key-mappings
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-inoremap <expr><c-g> neocomplete#undo_completion()
-inoremap <expr><c-l> neocomplete#complete_common_string()
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplete#close_popup()
-inoremap <expr><C-e> neocomplete#cancel_popup()
-" This makes sure we use neocomplete completefunc instead of
-" the one in rails.vim, otherwise this plugin will crap out.
-let g:neocomplete#force_overwrite_completefunc = 1
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets'
+" YouCompleteMe
+let g:ycm_key_detailed_diagnostics = ''
+let g:ycm_key_invoke_completion = ''
+let g:ycm_complete_in_strings=0
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:gutentags_ctags_executable = 'ctags --fields=+l'
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCrMapping             = 0
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Easy-motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -350,11 +313,11 @@ vnoremap > >gv
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 vnoremap <c-j> :join<cr>
-vnoremap <c-y> "+y
-noremap <c-p> "+p
-set pastetoggle=<F9>
-inoremap <c-p> <F9><C-r>+<F9>
-inoremap <c-h> <bs>
+" set pastetoggle=<F9>
+" vnoremap <c-y> "+y
+" noremap <c-p> "+p
+" inoremap <c-p> <F9><C-r>+<F9>
+" inoremap <c-h> <bs>
 
 cnoremap <c-p> <c-r>+
 cnoremap <c-v> <c-r>"
@@ -425,6 +388,22 @@ nnoremap <leader>a= :Tabularize /=<CR>
 vnoremap <leader>a= :Tabularize /=<CR>
 nnoremap <leader>a: :Tabularize /:\zs<CR>
 vnoremap <leader>a: :Tabularize /:\zs<CR>
+nnoremap <Leader>a& :Tabularize /&<CR>
+vnoremap <Leader>a& :Tabularize /&<CR>
+nnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+vnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+nnoremap <Leader>a=> :Tabularize /=><CR>
+vnoremap <Leader>a=> :Tabularize /=><CR>
+nnoremap <Leader>a: :Tabularize /:<CR>
+vnoremap <Leader>a: :Tabularize /:<CR>
+nnoremap <Leader>a:: :Tabularize /:\zs<CR>
+vnoremap <Leader>a:: :Tabularize /:\zs<CR>
+nnoremap <Leader>a, :Tabularize /,<CR>
+vnoremap <Leader>a, :Tabularize /,<CR>
+nnoremap <Leader>a,, :Tabularize /,\zs<CR>
+vnoremap <Leader>a,, :Tabularize /,\zs<CR>
+nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>e :CtrlP .<cr>
 nnoremap <leader>g :TagbarToggle<CR>
@@ -437,7 +416,6 @@ nnoremap <silent> <leader>i4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>i5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>i6 :call HiInterestingWord(6)<cr>
 nnoremap <leader>m :MaximizerToggle<CR>
-" nnoremap <leader>n :call RenameFile()<cr>
 nnoremap <leader>q :qall
 nnoremap <silent> <leader>r :e!<cr>
 nnoremap <leader>t :CtrlPTag<CR>
@@ -590,9 +568,8 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 
 highlight search ctermfg=white ctermbg=3423513
 
-" better retab
-fu! Retab()
-  :retab
-  :%s/\s\+$//
-endfunction
-
+" " better retab
+" fu! Retab()
+"   :retab
+"   :%s/\s\+$//
+" endfunction
