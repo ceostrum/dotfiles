@@ -22,11 +22,13 @@ Plugin 'flazz/vim-colorschemes'
 " main plugins
 Plugin 'bling/vim-airline'              " status line
 Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
+Plugin 'christoomey/vim-tmux-navigator' " tmux navigating
 Plugin 'godlygeek/tabular'              " alignment
 Plugin 'henrik/vim-indexed-search'      " i of x in searches
 Plugin 'lokaltog/vim-easymotion'        " vim motions on speed
 Plugin 'ludovicchabant/vim-gutentags'   " auto tag generation
 Plugin 'majutsushi/tagbar'              " tag side bar
+Plugin 'ngmy/vim-rubocop'               " rubocop in vim
 Plugin 'ntpeters/vim-better-whitespace' " auto whitespace
 Plugin 'rking/ag.vim'                   " ag searching
 Plugin 'scrooloose/nerdtree'            " nerdtree
@@ -106,6 +108,7 @@ set infercase
 set laststatus=2
 set lazyredraw
 set nowrap
+set number
 set relativenumber
 set numberwidth=4
 set scrolljump=5
@@ -164,6 +167,10 @@ let g:NERDTreeIgnore=['.DS_Store', '.git']
 
 hi link ExtraWhitespace Error
 
+if exists('+colorcolumn')
+    set colorcolumn=100
+endif
+
 "###############################################################################
 "
 " Plugins
@@ -218,6 +225,8 @@ let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowLineNumbers = 1
+autocmd FileType nerdtree setlocal relativenumber
 
 " tagbar
 let g:tagbar_autofocus=1
@@ -244,15 +253,18 @@ let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:gutentags_ctags_executable = 'ctags --fields=+l'
+let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_key_invoke_completion = '<C-Space>'
 
 " Supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCrMapping             = 0
+" let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabCrMapping             = 0
+let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " Easy-motion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -288,7 +300,6 @@ onoremap <c-@> <esc>
 cnoremap <c-@> <C-c>
 inoremap <c-@> <esc>`^
 
-map     e <Plug>(easymotion-sn)
 noremap : ;
 noremap ; :
 noremap 0 g^
@@ -406,7 +417,14 @@ nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>e :CtrlP .<cr>
+map <leader><leader>e <Plug>(easymotion-sn)
 nnoremap <leader>g :TagbarToggle<CR>
+" git
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gp :Dispatch! git push<CR>
+
 nnoremap <leader>h :nohlsearch<CR>
 nnoremap <leader>ic :call clearmatches()<CR>:noh<CR>
 nnoremap <silent> <leader>i1 :call HiInterestingWord(1)<cr>
