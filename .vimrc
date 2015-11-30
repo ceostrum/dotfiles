@@ -436,6 +436,7 @@ nnoremap <silent> <leader>i6 :call HiInterestingWord(6)<cr>
 nnoremap <leader>m :MaximizerToggle<CR>
 nnoremap <leader>q :qall
 nnoremap <silent> <leader>r :e!<cr>
+nnoremap <leader>rb :RuboCop<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>u :GundoToggle<cr>
 nnoremap <leader>V :source ~/.vimrc<cr>
