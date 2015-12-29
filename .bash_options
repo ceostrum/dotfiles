@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# bash_options
+
+# Autocorrect typos in path names when using 'cd'
+shopt -s cdspell
+
+# Append to history rather than overwrite
+shopt -s histappend
+
+# Reset windowsize after each command
+shopt -s checkwinsize
+
+shopt -s nocaseglob

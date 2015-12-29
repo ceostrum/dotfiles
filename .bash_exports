@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# bash_exports
+
+export PATH=./:$HOME/dev/neovim/build/bin:$HOME/bin:/usr/bin:/usr/local/bin:$HOME/.tmuxifier/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
+export INCLUDE=$HOME/include:$INCLUDE
+
+# make vim the default editor
+export EDITOR="vim"
+
+# ignore duplicate commands in the history
+export HISTCONTROL=ignoredups
+
+# increase max number of lines
+export HISTFILESIZE=10000
+
+# increase max number of commands
+export HISTSIZE=10000
+
+# ignore some commands
+export HISTIGNORE="ls:ls *:cd:cd -:pwd:exit:date:* --help";
+
+# don't clear the screen after quitting a man page
+export MANPAGER="less -X"
+
+# make new shells get the history lines from all previous
+# shells history
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# always enable colored grep output
+export GREP_OPTIONS="--color=auto"
+
+# less in color
+export LESS='-R'
+
+# no autologout
+export TMOUT=0
