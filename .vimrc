@@ -397,24 +397,41 @@ nnoremap <space> :NERDTreeToggle<cr>
 nnoremap <leader>. :NERDTreeFind<cr>
 nnoremap <leader>a= :Tabularize /=<CR>
 vnoremap <leader>a= :Tabularize /=<CR>
+nnoremap <leader>a== :Tabularize /=\zs<CR>
+vnoremap <leader>a== :Tabularize /=\zs<CR>
+" nnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+" vnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+
 nnoremap <leader>a: :Tabularize /:\zs<CR>
 vnoremap <leader>a: :Tabularize /:\zs<CR>
-nnoremap <Leader>a& :Tabularize /&<CR>
-vnoremap <Leader>a& :Tabularize /&<CR>
-nnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-vnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-nnoremap <Leader>a=> :Tabularize /=><CR>
-vnoremap <Leader>a=> :Tabularize /=><CR>
-nnoremap <Leader>a: :Tabularize /:<CR>
-vnoremap <Leader>a: :Tabularize /:<CR>
 nnoremap <Leader>a:: :Tabularize /:\zs<CR>
 vnoremap <Leader>a:: :Tabularize /:\zs<CR>
+
+nnoremap <Leader>a& :Tabularize /&<CR>
+vnoremap <Leader>a& :Tabularize /&<CR>
+
+nnoremap <Leader>a=> :Tabularize /=><CR>
+vnoremap <Leader>a=> :Tabularize /=><CR>
+
 nnoremap <Leader>a, :Tabularize /,<CR>
 vnoremap <Leader>a, :Tabularize /,<CR>
 nnoremap <Leader>a,, :Tabularize /,\zs<CR>
 vnoremap <Leader>a,, :Tabularize /,\zs<CR>
+
+nnoremap <Leader>a<Space> :Tabularize /<Space><CR>
+vnoremap <Leader>a<Space> :Tabularize /<Space><CR>
+
+nnoremap <Leader>a# :Tabularize /#<CR>
+vnoremap <Leader>a# :Tabularize /#<CR>
+
 nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+nnoremap <Leader>a<Bar><Bar> :Tabularize /<Bar><Bar><CR>
+vnoremap <Leader>a<Bar><Bar> :Tabularize /<Bar><Bar><CR>
+
+nnoremap <Leader>a- :Tabularize /-<CR>
+vnoremap <Leader>a- :Tabularize /-<CR>
+
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>e :CtrlP .<cr>
 map <leader><leader>e <Plug>(easymotion-sn)
