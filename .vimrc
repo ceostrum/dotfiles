@@ -134,6 +134,7 @@ set synmaxcol=1000 "
 set t_Co=16
 set t_ut=
 set tabstop=4
+set tags=tags;
 set textwidth=0
 set ttyfast
 set virtualedit=onemore
@@ -168,7 +169,7 @@ let g:NERDTreeIgnore=['.DS_Store', '.git']
 hi link ExtraWhitespace Error
 
 if exists('+colorcolumn')
-    set colorcolumn=100
+    set colorcolumn=125
 endif
 
 "###############################################################################
@@ -397,24 +398,41 @@ nnoremap <space> :NERDTreeToggle<cr>
 nnoremap <leader>. :NERDTreeFind<cr>
 nnoremap <leader>a= :Tabularize /=<CR>
 vnoremap <leader>a= :Tabularize /=<CR>
+nnoremap <leader>a== :Tabularize /=\zs<CR>
+vnoremap <leader>a== :Tabularize /=\zs<CR>
+" nnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+" vnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+
 nnoremap <leader>a: :Tabularize /:\zs<CR>
 vnoremap <leader>a: :Tabularize /:\zs<CR>
-nnoremap <Leader>a& :Tabularize /&<CR>
-vnoremap <Leader>a& :Tabularize /&<CR>
-nnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-vnoremap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-nnoremap <Leader>a=> :Tabularize /=><CR>
-vnoremap <Leader>a=> :Tabularize /=><CR>
-nnoremap <Leader>a: :Tabularize /:<CR>
-vnoremap <Leader>a: :Tabularize /:<CR>
 nnoremap <Leader>a:: :Tabularize /:\zs<CR>
 vnoremap <Leader>a:: :Tabularize /:\zs<CR>
+
+nnoremap <Leader>a& :Tabularize /&<CR>
+vnoremap <Leader>a& :Tabularize /&<CR>
+
+nnoremap <Leader>a=> :Tabularize /=><CR>
+vnoremap <Leader>a=> :Tabularize /=><CR>
+
 nnoremap <Leader>a, :Tabularize /,<CR>
 vnoremap <Leader>a, :Tabularize /,<CR>
 nnoremap <Leader>a,, :Tabularize /,\zs<CR>
 vnoremap <Leader>a,, :Tabularize /,\zs<CR>
+
+nnoremap <Leader>a<Space> :Tabularize /<Space><CR>
+vnoremap <Leader>a<Space> :Tabularize /<Space><CR>
+
+nnoremap <Leader>a# :Tabularize /#<CR>
+vnoremap <Leader>a# :Tabularize /#<CR>
+
 nnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vnoremap <Leader>a<Bar> :Tabularize /<Bar><CR>
+nnoremap <Leader>a<Bar><Bar> :Tabularize /<Bar><Bar><CR>
+vnoremap <Leader>a<Bar><Bar> :Tabularize /<Bar><Bar><CR>
+
+nnoremap <Leader>a- :Tabularize /-<CR>
+vnoremap <Leader>a- :Tabularize /-<CR>
+
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>e :CtrlP .<cr>
 map <leader><leader>e <Plug>(easymotion-sn)
@@ -437,6 +455,7 @@ nnoremap <leader>m :MaximizerToggle<CR>
 nnoremap <leader>q :qall
 nnoremap <silent> <leader>r :e!<cr>
 nnoremap <leader>rb :RuboCop<CR>
+nnoremap <leader>rba :RuboCop -a<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>u :GundoToggle<cr>
 nnoremap <leader>V :source ~/.vimrc<cr>
@@ -447,6 +466,8 @@ nnoremap <leader><leader>j :Ag <Space>-G="*.(js\|coffee)" app<S-Left><S-Left><Le
 nnoremap <leader><leader>r :Ag <Space>-G="*.(rb\|rake)"<S-Left><Left>
 nnoremap <leader><leader>t :Ag <Space>-G="*_spec.rb" spec<S-Left><S-Left><Left>
 nnoremap <leader><leader>v :Ag <Space>-G="*.(erb\|slim)" app<S-Left><S-Left><Left>
+
+nnoremap <leader><leader>l :exec "se nu!"<cr>:exec "se rnu!"<cr>
 
 xmap <leader>c  <Plug>Commentary
 nmap <leader>c  <Plug>Commentary

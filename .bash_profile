@@ -3,7 +3,6 @@
 # bash_profile
 
 umask 002
-set -o emacs
 set -o monitor          # enable job control
 set -o ignoreeof        # do not let CNTL-D exit the shell
 
