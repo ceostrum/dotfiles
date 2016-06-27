@@ -16,9 +16,10 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
     export TERM=xterm-256color
 fi
 eval `dircolors ~/.dir_colors`
-eval "$(rbenv init -)"
 
 source $HOME/.bash_exports
 source $HOME/.bash_options
 source $HOME/.bash_aliases
 source $HOME/.bash_functions
+
+eval "$(rbenv init -)"
