@@ -15,6 +15,7 @@ alias tls='tmux ls'
 alias ta='tmux a -t'
 
 alias vi='vim'
+alias em='emacs'
 alias h='history'
 alias p='pwd'
 alias r='fc -s'
