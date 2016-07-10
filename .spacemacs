@@ -18,9 +18,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     markdown
-     javascript
-     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -36,10 +33,11 @@ values."
      games
      git
      github
-     gtags
-     ;; (gtags :variables
-     ;;        helm-gtags-pulse-at-cursor nil)
+     javascript
+     (gtags :variables
+            helm-gtags-pulse-at-cursor nil)
      markdown
+     yaml
      org
      python
      ranger

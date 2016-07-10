@@ -21,6 +21,7 @@ Plugin 'flazz/vim-colorschemes'
 
 " main plugins
 Plugin 'bling/vim-airline'              " status line
+Plugin 'vim-airline/vim-airline-themes' " status line themes
 Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
 Plugin 'christoomey/vim-tmux-navigator' " tmux navigating
 Plugin 'godlygeek/tabular'              " alignment
@@ -134,6 +135,7 @@ set synmaxcol=1000 "
 set t_Co=16
 set t_ut=
 set tabstop=4
+set tags=tags;
 set textwidth=0
 set ttyfast
 set virtualedit=onemore
@@ -168,7 +170,7 @@ let g:NERDTreeIgnore=['.DS_Store', '.git']
 hi link ExtraWhitespace Error
 
 if exists('+colorcolumn')
-    set colorcolumn=100
+    set colorcolumn=125
 endif
 
 "###############################################################################
@@ -243,7 +245,7 @@ let g:surround_61 = "<%= \r %>"
 let g:surround_33 = "```\r```"
 
 " ag
-let g:agprg="/home/costrum/bin/ag --nogroup --column"
+let g:ag_prg="/usr/local/bin/ag --nogroup --column"
 
 " YouCompleteMe
 let g:ycm_key_detailed_diagnostics = ''
@@ -454,6 +456,7 @@ nnoremap <leader>m :MaximizerToggle<CR>
 nnoremap <leader>q :qall
 nnoremap <silent> <leader>r :e!<cr>
 nnoremap <leader>rb :RuboCop<CR>
+nnoremap <leader>rba :RuboCop -a<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>u :GundoToggle<cr>
 nnoremap <leader>V :source ~/.vimrc<cr>
@@ -464,6 +467,8 @@ nnoremap <leader><leader>j :Ag <Space>-G="*.(js\|coffee)" app<S-Left><S-Left><Le
 nnoremap <leader><leader>r :Ag <Space>-G="*.(rb\|rake)"<S-Left><Left>
 nnoremap <leader><leader>t :Ag <Space>-G="*_spec.rb" spec<S-Left><S-Left><Left>
 nnoremap <leader><leader>v :Ag <Space>-G="*.(erb\|slim)" app<S-Left><S-Left><Left>
+
+nnoremap <leader><leader>l :exec "se nu!"<cr>:exec "se rnu!"<cr>
 
 xmap <leader>c  <Plug>Commentary
 nmap <leader>c  <Plug>Commentary

@@ -15,6 +15,7 @@ alias tls='tmux ls'
 alias ta='tmux a -t'
 
 alias vi='vim'
+alias em='emacs'
 alias h='history'
 alias p='pwd'
 alias r='fc -s'
@@ -26,9 +27,12 @@ alias be='sudo su -'
 # Git
 alias gs='git status'
 alias gp='git pull'
+alias gb='git branch'
 alias gd='git difftool -w'
 alias gl='git log --pretty=oneline'
 alias gg='git log --graph --oneline --decorate --all'
+alias gprunelocal='git branch --merged master | grep -v 'master$' | xargs git branch -d 2>/dev/null'
+alias gpruneremote='git remote prune origin'
 
 # rubocop
 alias rc='rubocop'

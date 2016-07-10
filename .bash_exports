@@ -2,7 +2,7 @@
 
 # bash_exports
 
-export PATH=./:$HOME/dev/neovim/build/bin:$HOME/bin:/usr/bin:/usr/local/bin:$HOME/.tmuxifier/bin:$PATH
+export PATH=./:$HOME/bin:/usr/local/bin:/usr/bin:$HOME/.rbenv/bin:$HOME/.tmuxifier/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 export INCLUDE=$HOME/include:$INCLUDE
 

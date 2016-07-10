@@ -3,7 +3,6 @@
 # bash_profile
 
 umask 002
-set -o emacs
 set -o monitor          # enable job control
 set -o ignoreeof        # do not let CNTL-D exit the shell
 
@@ -17,6 +16,7 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
     export TERM=xterm-256color
 fi
 eval `dircolors ~/.dir_colors`
+eval "$(rbenv init -)"
 
 source $HOME/.bash_exports
 source $HOME/.bash_options
