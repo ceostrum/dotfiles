@@ -33,12 +33,16 @@ values."
      games
      git
      github
-     ;; markdown
+     javascript
+     (gtags :variables
+            helm-gtags-pulse-at-cursor nil)
+     markdown
+     yaml
      org
      python
      ranger
      (ruby :variables
-           ruby-enable-enh-ruby-mode t
+           ruby-enable-enh-ruby-mode nil
            ruby-version-manager 'rbenv
            ruby-test-runner 'ruby-test
            )
@@ -52,9 +56,10 @@ values."
      ;; spotify
      semantic
      syntax-checking
-     unimpaired
+     ;; unimpaired
      version-control
      xkcd
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -255,6 +260,18 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq-default
+   ;; Smartparens
+   sp-highlight-pair-overlay nil
+   sp-highlight-wrap-overlay nil
+   sp-highlight-wrap-tag-overlay nil
+
+   ;; Avy
+   avy-all-windows 'all-frames
+
+   ;; Ranger
+   ranger-override-dired t
+   )
   )
 
 (defun dotspacemacs/user-config ()
@@ -264,14 +281,26 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; remap escape
+  (setq-default evil-escape-key-sequence "jk")
+
   ;; relative line numbers everywhere
   (global-linum-mode t)
+
   ;; turn off smart parens
   (remove-hook 'prog-mode-hook #'smartparens-mode)
+  (spacemacs/toggle-smartparens-globally-off)
+
   ;; make 0 go to the start of the text on the line
   (define-key evil-normal-state-map (kbd "0") (kbd "g^"))
-  ;; tag jumping
-  (define-key evil-normal-state-map (kbd "C-]") 'helm-etags-select)
+
+  ;; disable smartparens highlighting
+  (with-eval-after-load 'smartparens
+    (show-smartparens-global-mode -1))
+
+  ;; gtags
+  (add-hook 'ruby-mode-hook #'spacemacs/ggtags-mode-enable)
+  (spacemacs/helm-gtags-define-keys-for-mode 'ruby-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
