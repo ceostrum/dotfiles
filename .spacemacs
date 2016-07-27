@@ -33,6 +33,7 @@ values."
      games
      git
      github
+     html
      javascript
      (gtags :variables
             helm-gtags-pulse-at-cursor nil)
@@ -56,6 +57,7 @@ values."
      ;; spotify
      semantic
      syntax-checking
+     typescript
      ;; unimpaired
      version-control
      xkcd
