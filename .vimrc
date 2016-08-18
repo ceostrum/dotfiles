@@ -21,7 +21,6 @@ Plugin 'flazz/vim-colorschemes'
 
 " main plugins
 Plugin 'bling/vim-airline'              " status line
-Plugin 'vim-airline/vim-airline-themes' " status line themes
 Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
 Plugin 'christoomey/vim-tmux-navigator' " tmux navigating
 Plugin 'godlygeek/tabular'              " alignment
@@ -245,7 +244,7 @@ let g:surround_61 = "<%= \r %>"
 let g:surround_33 = "```\r```"
 
 " ag
-let g:ag_prg="/usr/local/bin/ag --nogroup --column"
+let g:agprg="/home/costrum/bin/ag --nogroup --column"
 
 " YouCompleteMe
 let g:ycm_key_detailed_diagnostics = ''
