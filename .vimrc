@@ -20,48 +20,43 @@ Plugin 'gmarik/vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 
 " main plugins
-Plugin 'bling/vim-airline'              " status line
-Plugin 'ctrlpvim/ctrlp.vim'             " fuzzy finder
-Plugin 'christoomey/vim-tmux-navigator' " tmux navigating
-Plugin 'godlygeek/tabular'              " alignment
-Plugin 'henrik/vim-indexed-search'      " i of x in searches
-Plugin 'lokaltog/vim-easymotion'        " vim motions on speed
-Plugin 'ludovicchabant/vim-gutentags'   " auto tag generation
-Plugin 'majutsushi/tagbar'              " tag side bar
-Plugin 'ngmy/vim-rubocop'               " rubocop in vim
-Plugin 'ntpeters/vim-better-whitespace' " auto whitespace
-Plugin 'rking/ag.vim'                   " ag searching
-Plugin 'scrooloose/nerdtree'            " nerdtree
-Plugin 'scrooloose/syntastic'           " syntax checking
-Plugin 'sheerun/vim-polyglot'           " language pack
-Plugin 'sjl/gundo.vim'                  " undo manager
-Plugin 'szw/vim-maximizer'              " split maximizer
-Plugin 'tpope/vim-abolish'              " smart search/replace
-Plugin 'tpope/vim-commentary'           " comment stuff
-Plugin 'tpope/vim-dispatch'             " background runner
-Plugin 'tpope/vim-endwise'              " add end's in Ruby
-Plugin 'tpope/vim-fugitive'             " git wrapper
-Plugin 'tpope/vim-repeat'               " repeat plugin commands
-Plugin 'tpope/vim-surround'             " surround objects
-Plugin 'tpope/vim-unimpaired'           " bracket mappings [<space>, ]<space>, etc
-Plugin 'xolox/vim-misc'                 " xolox req
-Plugin 'xolox/vim-notes'                " note taking
+Plugin 'vim-airline/vim-airline-themes'      " airline theme
+Plugin 'bling/vim-airline'                   " status line
+Plugin 'ctrlpvim/ctrlp.vim'                  " fuzzy finder
+Plugin 'christoomey/vim-tmux-navigator'      " tmux navigating
+Plugin 'godlygeek/tabular'                   " alignment
+Plugin 'henrik/vim-indexed-search'           " i of x in searches
+Plugin 'leafgarland/typescript-vim'          " typescript syntax
+Plugin 'lokaltog/vim-easymotion'             " vim motions on speed
+Plugin 'ludovicchabant/vim-gutentags'        " auto tag generation
+Plugin 'majutsushi/tagbar'                   " tag side bar
+Plugin 'ngmy/vim-rubocop'                    " rubocop in vim
+Plugin 'ntpeters/vim-better-whitespace'      " auto whitespace
+Plugin 'quramy/tsuquyomi'                    " typescript autocomplete
+Plugin 'quramy/vim-js-pretty-template'       " pretty js templates in ts files
+Plugin 'rking/ag.vim'                        " ag searching
+Plugin 'scrooloose/nerdtree'                 " nerdtree
+Plugin 'scrooloose/syntastic'                " syntax checking
+Plugin 'sheerun/vim-polyglot'                " language pack
+Plugin 'shougo/vimproc.vim', {'do' : 'make'} " Tsuguyomi dependency
+Plugin 'sjl/gundo.vim'                       " undo manager
+Plugin 'szw/vim-maximizer'                   " split maximizer
+Plugin 'tpope/vim-abolish'                   " smart search/replace
+Plugin 'tpope/vim-commentary'                " comment stuff
+Plugin 'tpope/vim-dispatch'                  " background runner
+Plugin 'tpope/vim-endwise'                   " add end's in Ruby
+Plugin 'tpope/vim-fugitive'                  " git wrapper
+Plugin 'tpope/vim-repeat'                    " repeat plugin commands
+Plugin 'tpope/vim-surround'                  " surround objects
+Plugin 'tpope/vim-unimpaired'                " bracket mappings [<space>, ]<space>, etc
+Plugin 'xolox/vim-misc'                      " xolox req
+Plugin 'xolox/vim-notes'                     " note taking
 
 " autocomplete
-Plugin 'valloric/youcompleteme'         " omni complete
-Plugin 'ervandew/supertab'              " tab completion in insert
-Plugin 'sirver/ultisnips'               " snippet tool
-Plugin 'honza/vim-snippets'             " snippets
-
-" investigate
-" Plugin 'deris/vim-shot-f'
-" Plugin 'vimwiki/vimwiki'
-" Plubin 'mattn/calendar-vim'
-" Plugin 'wellle/targets'
-" Plugin 'jeetsukumaran/vim-markology'
-" Plugin 'jeetsukumaran/vim-gazetteer'
-" Plugin 'TaskList.vim'
-" map <Leader>to :TaskList<CR>
+Plugin 'valloric/youcompleteme'              " omni complete
+Plugin 'ervandew/supertab'                   " tab completion in insert
+Plugin 'sirver/ultisnips'                    " snippet tool
+Plugin 'honza/vim-snippets'                  " snippets
 
 call vundle#end()
 filetype plugin indent on
@@ -74,7 +69,7 @@ filetype plugin indent on
 " colorscheme desert
 colorscheme solarized
 let mapleader = ","
-syntax on
+syntax enable
 
 " modify diff mode coloring
 if &diff
@@ -122,6 +117,7 @@ set sidescroll=1
 set sidescrolloff=15
 set smartcase
 set softtabstop=4
+set splitbelow
 set splitright
 " status line conflicts with Airline
 " set statusline=%<%f\
@@ -244,7 +240,7 @@ let g:surround_61 = "<%= \r %>"
 let g:surround_33 = "```\r```"
 
 " ag
-let g:agprg="/home/costrum/bin/ag --nogroup --column"
+let g:ag_prg="/usr/local/bin/ag --nogroup --column"
 
 " YouCompleteMe
 let g:ycm_key_detailed_diagnostics = ''
@@ -253,7 +249,7 @@ let g:ycm_complete_in_strings=0
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:gutentags_ctags_executable = 'ctags --fields=+l'
+let g:gutentags_ctags_executable = 'ctags'
 let g:ycm_seed_identifiers_with_syntax = 1
 " let g:ycm_key_invoke_completion = '<C-Space>'
 
@@ -284,6 +280,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete ts=2 sts=2 sw=2
+autocmd FileType bash setlocal ts=4 sts=2 sw=2 noet
 
 "###############################################################################
 " Mappings
@@ -396,6 +393,7 @@ endfunction
 
 nnoremap <space> :NERDTreeToggle<cr>
 nnoremap <leader>. :NERDTreeFind<cr>
+nnoremap <leader><tab> <C-^>
 nnoremap <leader>a= :Tabularize /=<CR>
 vnoremap <leader>a= :Tabularize /=<CR>
 nnoremap <leader>a== :Tabularize /=\zs<CR>
@@ -464,7 +462,7 @@ nnoremap <leader><leader>s :Ag <Space>-G="*"<S-Left><Left>
 nnoremap <leader><leader>c :Ag <Space>-G="*.(css\|scss)" app<S-Left><S-Left><Left>
 nnoremap <leader><leader>j :Ag <Space>-G="*.(js\|coffee)" app<S-Left><S-Left><Left>
 nnoremap <leader><leader>r :Ag <Space>-G="*.(rb\|rake)"<S-Left><Left>
-nnoremap <leader><leader>t :Ag <Space>-G="*_spec.rb" spec<S-Left><S-Left><Left>
+nnoremap <leader><leader>t :Ag <Space>-G="*.ts"<S-Left><Left>
 nnoremap <leader><leader>v :Ag <Space>-G="*.(erb\|slim)" app<S-Left><S-Left><Left>
 
 nnoremap <leader><leader>l :exec "se nu!"<cr>:exec "se rnu!"<cr>
@@ -509,6 +507,10 @@ augroup vimrcEx
 
   au FileType slim set commentstring=/\ %s
   au FileType python set sw=4 sts=4 et
+
+  " js pretty template
+  autocmd FileType typescript JsPreTmpl html
+  " autocmd FileType typescript syn clear foldBraces
 
   if did_filetype()
     finish
