@@ -53,7 +53,7 @@ Plugin 'xolox/vim-misc'                      " xolox req
 Plugin 'xolox/vim-notes'                     " note taking
 
 " autocomplete
-Plugin 'valloric/youcompleteme'              " omni complete
+"Plugin 'valloric/youcompleteme'              " omni complete
 Plugin 'ervandew/supertab'                   " tab completion in insert
 Plugin 'sirver/ultisnips'                    " snippet tool
 Plugin 'honza/vim-snippets'                  " snippets
@@ -243,14 +243,14 @@ let g:surround_33 = "```\r```"
 let g:ag_prg="/usr/local/bin/ag --nogroup --column"
 
 " YouCompleteMe
-let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_key_invoke_completion = ''
-let g:ycm_complete_in_strings=0
-let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:gutentags_ctags_executable = 'ctags'
-let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_key_detailed_diagnostics = ''
+" let g:ycm_key_invoke_completion = ''
+" let g:ycm_complete_in_strings=0
+" let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:gutentags_ctags_executable = 'ctags'
+" let g:ycm_seed_identifiers_with_syntax = 1
 " let g:ycm_key_invoke_completion = '<C-Space>'
 
 " Supertab
