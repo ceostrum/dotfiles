@@ -54,7 +54,9 @@ values."
      markdown
      yaml
      org
-     python
+     (python :variables
+             python-test-runner 'pytest
+             )
      ranger
      (ruby :variables
            ruby-enable-enh-ruby-mode nil
