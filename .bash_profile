@@ -24,3 +24,4 @@ source $HOME/.bash_functions
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
+eval "$(goenv init -)"
