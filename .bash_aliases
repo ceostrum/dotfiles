@@ -31,6 +31,8 @@ alias gb='git branch'
 alias gd='git difftool -w'
 alias gl='git log --pretty=oneline'
 alias gg='git log --graph --oneline --decorate --all'
+alias gco='git checkout'
+alias gca='git commit -am'
 alias gprunelocal='git branch --merged master | grep -v 'master$' | xargs git branch -d 2>/dev/null'
 alias gpruneremote='git remote prune origin'
 

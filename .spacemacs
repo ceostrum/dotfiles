@@ -57,6 +57,7 @@ values."
      org
      (python :variables
              python-test-runner 'pytest
+             python-enable-yapf-format-on-save t
              )
      ranger
      (ruby :variables
