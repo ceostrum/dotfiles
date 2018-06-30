@@ -40,3 +40,6 @@ export LESS='-R'
 
 # no autologout
 export TMOUT=0
+
+# gtags
+export GTAGSLABEL=pygments
