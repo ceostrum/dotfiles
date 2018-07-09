@@ -14,7 +14,7 @@ alias lsd="ls -lF --color | grep --color=never '^d'"
 alias tls='tmux ls'
 alias ta='tmux a -t'
 
-alias vi='vim'
+# alias vim='nvim'
 alias em='emacs'
 alias h='history'
 alias p='pwd'
