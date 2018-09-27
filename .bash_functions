@@ -90,3 +90,11 @@ function shist()
         done
     }
 }
+
+# ssh add auth
+function sshauthadd()
+{
+    user=`whoami`
+    remote=$1
+    cat .ssh/id_rsa.pub | ssh $user@$remote 'cat >> .ssh/authorized_keys'
+}
