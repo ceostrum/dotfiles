@@ -28,7 +28,7 @@ Plugin 'godlygeek/tabular'                   " alignment
 Plugin 'henrik/vim-indexed-search'           " i of x in searches
 Plugin 'leafgarland/typescript-vim'          " typescript syntax
 Plugin 'lokaltog/vim-easymotion'             " vim motions on speed
-Plugin 'ludovicchabant/vim-gutentags'        " auto tag generation
+" Plugin 'ludovicchabant/vim-gutentags'        " auto tag generation
 Plugin 'majutsushi/tagbar'                   " tag side bar
 Plugin 'ngmy/vim-rubocop'                    " rubocop in vim
 Plugin 'ntpeters/vim-better-whitespace'      " auto whitespace

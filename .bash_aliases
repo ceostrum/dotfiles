@@ -27,6 +27,7 @@ alias be='sudo su -'
 # Git
 alias gs='git status'
 alias gp='git pull'
+alias gpu='git push'
 alias gb='git branch'
 alias gd='git difftool -w'
 alias gl='git log --pretty=oneline'
