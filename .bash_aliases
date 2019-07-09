@@ -40,5 +40,8 @@ alias gpruneremote='git remote prune origin'
 # rubocop
 alias rc='rubocop'
 
+# redis
+alias redis-flushall="redis-cli flushall"
+
 # tags
 alias tagc='rm GPATH 2>/dev/null; rm GRTAGS 2>/dev/null; rm GTAGS 2>/dev/null; rm tags 2>/dev/null'

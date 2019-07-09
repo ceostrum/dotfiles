@@ -62,6 +62,7 @@ This function should only modify configuration layer settings."
      (python :variables
              python-test-runner 'pytest
              python-enable-yapf-format-on-save t
+             python-sort-imports-on-save t
              )
      ranger
      (ruby :variables
@@ -239,7 +240,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 18
                                :weight normal
                                :width normal)
 
@@ -476,9 +477,9 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default
    ;; Smartparens
-   ;; sp-highlight-pair-overlay nil
-   ;; sp-highlight-wrap-overlay nil
-   ;; sp-highlight-wrap-tag-overlay nil
+   sp-highlight-pair-overlay nil
+   sp-highlight-wrap-overlay nil
+   sp-highlight-wrap-tag-overlay nil
 
    ;; Avy
    ;; avy-all-windows 'all-frames
@@ -510,9 +511,6 @@ before packages are loaded."
 
   ;; remap escape
   (setq-default evil-escape-key-sequence "jk")
-
-  ;; relative line numbers everywhere
-  (global-linum-mode t)
 
   ;; make 0 go to the start of the text on the line
   (define-key evil-normal-state-map (kbd "0") (kbd "g^"))

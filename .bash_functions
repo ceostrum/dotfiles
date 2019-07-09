@@ -98,3 +98,13 @@ function sshauthadd()
     remote=$1
     cat .ssh/id_rsa.pub | ssh $user@$remote 'cat >> .ssh/authorized_keys'
 }
+
+function rabbit-purge()
+{
+    curl -i -X DELETE http://user:password@localhost:8080/api/queues/vhost/${1}/contents
+}
+
+function agr()
+{
+    ag -0 -l $1 | xargs -0 sed -ri"" -e "s/$1/$2/g"
+}
