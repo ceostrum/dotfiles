@@ -101,7 +101,7 @@ function sshauthadd()
 
 function rabbit-purge()
 {
-    curl -i -X DELETE http://user:password@localhost:8080/api/queues/vhost/${1}/contents
+    curl -i -X DELETE http://user:password@localhost:15672/api/queues/${1}/${2}/contents
 }
 
 function agr()

@@ -21,6 +21,7 @@ source $HOME/.bash_exports
 source $HOME/.bash_options
 source $HOME/.bash_aliases
 source $HOME/.bash_functions
+source $HOME/.git-completion.bash
 
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
