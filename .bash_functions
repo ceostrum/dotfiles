@@ -104,7 +104,14 @@ function rabbit-purge()
     curl -i -X DELETE http://user:password@localhost:15672/api/queues/${1}/${2}/contents
 }
 
+# ag search directory and replace with given keywords
 function agr()
 {
-    ag -0 -l $1 | xargs -0 sed -ri"" -e "s/$1/$2/g"
+    if [ "$#" -eq 2 ]; then
+        # if 2 args, search and replace on directory contents
+        ag -0 -l $1 | xargs -0 sed -ri"" -e "s/$1/$2/g"
+    elif [ "$#" -eq 3 ]; then
+        # if 3 args, search and replace on the given file
+        sed -ri"" -e "s/$1/$2/g" $3
+    fi
 }
