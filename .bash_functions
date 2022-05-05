@@ -115,3 +115,15 @@ function agr()
         sed -ri"" -e "s/$1/$2/g" $3
     fi
 }
+
+# top filter by input string
+function topfilter()
+{
+    filter=$(pgrep -d',' -f ${1})
+    if [ "${filter}X" == "X" ]; then
+        top
+    else
+        top -c -p ${filter}
+    fi
+}
+
