@@ -4,7 +4,6 @@
 
 export PYENV_ROOT="$HOME/.pyenv"
 export GOENV_ROOT="$HOME/.goenv"
-export GOPATH="$HOME/go"
 
 export PATH=./:$HOME/bin:/usr/local/bin:/usr/bin:$HOME/.rbenv/bin:$HOME/dev/tools/trouble-shooting-tools:$PYENV_ROOT/bin:/usr/local/go/bin:$GOENV_ROOT/bin:$GOPATH/bin:$HOME/.nodenv/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH

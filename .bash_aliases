@@ -39,6 +39,9 @@ alias gca='git commit -am'
 alias gprunelocal='git branch --merged master | grep -v 'master$' | xargs git branch -d 2>/dev/null'
 alias gpruneremote='git remote prune origin'
 
+# vscode
+alias vscodeupdate='sudo yum install code -y'
+
 # rubocop
 alias rc='rubocop'
 

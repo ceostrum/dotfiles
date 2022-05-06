@@ -24,6 +24,9 @@ source $HOME/.bash_functions
 source $HOME/.git-completion.bash
 
 eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-eval "$(goenv init -)"
+eval "$(pyenv init --path)"
 eval "$(nodenv init -)"
+
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
