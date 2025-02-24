@@ -16,7 +16,7 @@
     "editor.lineNumbers": "relative",
     "editor.matchBrackets": "near",
     "editor.cursorBlinking": "solid",
-    "workbench.editor.showTabs": true,
+    "workbench.editor.showTabs": "multiple",
     "vim.leader": "<space>",
     "vim.visualModeKeyBindings": [
         {
@@ -126,6 +126,20 @@
             "commands": [
                 {
                     "command": "editor.action.revealDefinition",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "o"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "chat.openEditors.view",
                     "args": []
                 }
             ]
@@ -1211,13 +1225,27 @@
         {
             "before": [
                 "<leader>",
-                "g",
+                "t",
+                "c"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "testing.clearTestResults",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
                 "t"
             ],
             "after": [],
             "commands": [
                 {
-                    "command": "go.test.cursor",
+                    "command": "testing.runAtCursor",
                     "args": []
                 }
             ]
@@ -1225,69 +1253,13 @@
         {
             "before": [
                 "<leader>",
-                "g",
-                "T"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "go.debug.cursor",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "f"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "go.test.file",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "g",
-                "a"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "go.test.workspace",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "p",
-                "t"
-            ],
-            "after": [],
-            "commands": [
-                {
-                    "command": "python.runCurrentTestFile",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "<leader>",
-                "p",
+                "t",
                 "d"
             ],
             "after": [],
             "commands": [
                 {
-                    "command": "python.selectAndDebugTestMethod",
+                    "command": "testing.debugAtCursor",
                     "args": []
                 }
             ]
@@ -1295,13 +1267,27 @@
         {
             "before": [
                 "<leader>",
-                "p",
-                "F"
+                "t",
+                "f"
             ],
             "after": [],
             "commands": [
                 {
-                    "command": "python.runFailedTests",
+                    "command": "testing.runCurrentFile",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t",
+                "a"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "testing.runAll",
                     "args": []
                 }
             ]
@@ -1375,9 +1361,7 @@
         }
     ],
     "vim.easymotion": true,
-    "window.menuBarVisibility": "default",
-    "workbench.activityBar.visible": true,
-    "editor.occurrencesHighlight": false,
+    "editor.occurrencesHighlight": "off",
     "workbench.colorTheme": "Solarized Dark",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -1404,6 +1388,28 @@
             "password": ""
         }
     ],
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fast"
+    ],
+    "go.formatTool": "gofumpt",
+    "gopls": {
+        "formatting.gofumpt": true
+    },
     "go.toolsManagement.autoUpdate": true,
-    "python.languageServer": "Default"
+    "python.languageServer": "Default",
+    "hexeditor.columnWidth": 16,
+    "hexeditor.showDecodedText": true,
+    "hexeditor.defaultEndianness": "little",
+    "hexeditor.inspectorType": "aside",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "makefile.configureOnOpen": false,
+    "github.copilot.chat.generateTests.codeLens": true,
+    "github.copilot.chat.inlineChatCompletionTrigger.enabled": true,
+    "github.copilot.chat.inlineChatHint.enabled": true,
+    "chat.editing.alwaysSaveWithGeneratedChanges": true
 }

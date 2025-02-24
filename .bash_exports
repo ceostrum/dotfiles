@@ -3,9 +3,8 @@
 # bash_exports
 
 export PYENV_ROOT="$HOME/.pyenv"
-export GOENV_ROOT="$HOME/.goenv"
 
-export PATH=./:$HOME/bin:/usr/local/bin:/usr/bin:$HOME/.rbenv/bin:$HOME/dev/tools/trouble-shooting-tools:$PYENV_ROOT/bin:/usr/local/go/bin:$GOENV_ROOT/bin:$GOPATH/bin:$HOME/.nodenv/bin:$PATH
+export PATH=./:$HOME/bin:/usr/local/bin:/usr/bin:/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/source/kafka_2.13-3.5.0/bin:$PATH:$HOME/go/bin
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 export INCLUDE=$HOME/include:$INCLUDE
 
@@ -41,4 +40,4 @@ export LESS='-R'
 export TMOUT=0
 
 # gtags
-export GTAGSLABEL=pygments
+# export GTAGSLABEL=pygments

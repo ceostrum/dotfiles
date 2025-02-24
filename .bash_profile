@@ -15,6 +15,7 @@ if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev
 elif infocmp xterm-256color >/dev/null 2>&1; then
     export TERM=xterm-256color
 fi
+
 eval `dircolors ~/.dir_colors`
 
 source $HOME/.bash_exports
@@ -23,10 +24,8 @@ source $HOME/.bash_aliases
 source $HOME/.bash_functions
 source $HOME/.git-completion.bash
 
-eval "$(rbenv init -)"
 eval "$(pyenv init --path)"
-eval "$(nodenv init -)"
 
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
+# Set up fzf key bindings and fuzzy completion
+# eval "$(fzf --bash)"
+

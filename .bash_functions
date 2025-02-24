@@ -67,41 +67,12 @@ function fc()
     #ll $1 | wc
 }
 
-# SVN File History
-function shist()
-{
-    url=$1 # current url of file
-    svn log -q $url | grep -E -e "^r[[:digit:]]+" -o | cut -c2- | sort -n |
-    {
-        # first revision as full text
-        echo
-        read r
-        svn log -r$r $url@HEAD
-        svn cat -r$r $url@HEAD
-        echo
-
-        # remaining revisions as differences to previous revision
-        while read r
-        do
-            echo
-            svn log -r$r $url@HEAD
-            svn diff --internal-diff -c$r $url@HEAD
-            echo
-        done
-    }
-}
-
 # ssh add auth
 function sshauthadd()
 {
     user=`whoami`
     remote=$1
     cat .ssh/id_rsa.pub | ssh $user@$remote 'cat >> .ssh/authorized_keys'
-}
-
-function rabbit-purge()
-{
-    curl -i -X DELETE http://user:password@localhost:15672/api/queues/${1}/${2}/contents
 }
 
 # ag search directory and replace with given keywords
@@ -125,5 +96,86 @@ function topfilter()
     else
         top -c -p ${filter}
     fi
+}
+
+function unzip_all() {
+    if [ -z "$1" ]; then
+        echo "You must supply a directory."
+        return 1
+    elif [ ! -d "$1" ]; then
+        echo "$1 is not a valid directory."
+        return 1
+    fi
+
+    for zip in "$1"/*.zip
+    do
+        unzip "$zip" -d "$1"
+    done
+}
+
+function postj() {
+    curl -s -H "Content-Type: application/json" -d "@$2" "$1"
+}
+
+function postjv() {
+    curl -v -H "Content-Type: application/json" -d "@$2" "$1"
+}
+
+function putj() {
+    curl -s -X PUT -H "Content-Type: application/json" -d "@$2" "$1"
+}
+
+function putjv() {
+    curl -v -X PUT -H "Content-Type: application/json" -d "@$2" "$1"
+}
+
+function del() {
+    curl -s -X DELETE "$1"
+}
+
+function delv() {
+    curl -v -X DELETE "$1"
+}
+
+function postf() {
+    curl -s -F "file=@$2" "$1"
+}
+
+function postfv() {
+    curl -v -F "file=@$2" "$1"
+}
+
+function getf() {
+    curl -s "$1" -o "$2"
+}
+
+function getfv() {
+    curl -v "$1" -o "$2"
+}
+
+
+function kdtl() {
+    docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --list
+}
+
+function kdtc() {
+    docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --create --topic "$1"
+}
+
+function kdtd() {
+    docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic "$1"
+}
+
+function kdtp() {
+    docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic "$1"
+    docker exec -it kafka kafka-topics.sh --bootstrap-server localhost:9092 --create --topic "$1"
+}
+
+function kdp() {
+    docker exec -it kafka kafka-console-producer.sh --topic "$1" --bootstrap-server localhost:9092
+}
+
+function kdc() {
+    docker exec -it kafka  kafka-console-consumer.sh --topic "$1" --from-beginning --bootstrap-server localhost:9092
 }
 
