@@ -12,6 +12,7 @@ alias lsd="ls -lF --color | grep --color=never '^d'"
 alias lr='ls -lFhR --color --group-directories-first'
 
 # tmux
+alias tmux="TERM=screen-256color-bce tmux"
 alias tls='tmux ls'
 alias ta='tmux a -t'
 
@@ -24,6 +25,7 @@ alias be='sudo su -'
 
 # Git
 alias gs='git status'
+alias cgs='clear; git status'
 alias gp='git pull'
 alias gpu='git push'
 # alias gb='git branch'
@@ -57,6 +59,9 @@ alias pipu='pip3 install --upgrade pip'
 alias pipi='pip3 install -r requirements.txt'
 alias pysetup='pve; pa; pipu; pipi'
 
+# uv
+alias uvr='uv run'
+
 # time
 alias epochnow='date +%s%N | cut -b1-16'
 
@@ -70,10 +75,64 @@ alias ml='make local'
 alias mr='make run'
 alias mt='make test'
 
-# testing
+# vscode
+ci() {
+    local display_set=false
+
+    if [ -n "$TMUX" ]; then
+        for try_display in $(tmux show-environment | grep "^DISPLAY" | cut -d= -f2) \
+                           "$DISPLAY" \
+                           ":0" \
+                           ":1" \
+                           ":10"; do
+            if [ -n "$try_display" ]; then
+                export DISPLAY="$try_display"
+                if xset q &>/dev/null 2>&1 || xdpyinfo &>/dev/null 2>&1; then
+                    display_set=true
+                    echo "Using DISPLAY=$DISPLAY"
+                    break
+                fi
+            fi
+        done
+    elif [ -z "$DISPLAY" ]; then
+        for try_display in ":0" ":1" ":10"; do
+            export DISPLAY="$try_display"
+            if xset q &>/dev/null 2>&1 || xdpyinfo &>/dev/null 2>&1; then
+                display_set=true
+                echo "Using DISPLAY=$DISPLAY"
+                break
+            fi
+        done
+    fi
+
+    if [ "$display_set" = false ] && [ -z "$DISPLAY" ]; then
+        export DISPLAY=":0"
+        echo "Warning: No valid X display found, defaulting to DISPLAY=:0"
+    fi
+
+    code-insiders "$@"
+}
+
+alias fix-display='~/.local/bin/fix-display'
+alias cir='DISPLAY=:0 code-insiders'
+alias cursor='DISPLAY=:1 cursor'
+
+# fzw
 alias R='cd "$(git rev-parse --show-toplevel)"'
 alias ga="git status --porcelain -u | fzf -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all | awk '{\$1=\"\"; print \$0}' | xargs -I {} git add {}"
 alias gb="git branch | fzf | awk '{print $1}' | xargs git checkout"
 alias gbd="git branch | fzf -m | awk '{print $1}' | xargs -I {} git branch -D {}"
 alias gr="git status --porcelain | grep -v '^??' | grep -v '^ ' | fzf -m --bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all | awk '{\$1=\"\"; print \$0}' | xargs -I {} git restore --staged {}"
+
+# copilot
+alias cp5="COPILOT_MODEL=gpt-5 copilot --allow-all-tools"
+
+# claude
+alias tac="ta claude"
+alias claude="/home/costrum/.claude/local/claude"
+alias cld='claude --dangerously-skip-permissions'
+alias cldo='cld --model opus'
+alias clds='cld --model sonnet'
+alias cldp='cld --mcp-config /home/costrum/.claude/.mcp.playwright.json'
+alias cldma='cld --mcp-config /home/costrum/.claude/.mcp.json'
 

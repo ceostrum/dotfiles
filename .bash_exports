@@ -2,9 +2,43 @@
 
 # bash_exports
 
-export PYENV_ROOT="$HOME/.pyenv"
+# Auto-set display variables for tmux when display server is accessible
+if [ -n "$TMUX" ] && [ -z "$DISPLAY" ]; then
+    # Check for Wayland first
+    if [ -S "/run/user/$(id -u)/wayland-0" ]; then
+        export DISPLAY=:0
+        export WAYLAND_DISPLAY=wayland-0
+        export XDG_SESSION_TYPE=wayland
+        # Find and set XAUTHORITY for X11 apps under Wayland (XWayland)
+        XAUTH_FILE=$(find /run/user/$(id -u) -name ".mutter-Xwaylandauth*" 2>/dev/null | head -1)
+        if [ -n "$XAUTH_FILE" ]; then
+            export XAUTHORITY="$XAUTH_FILE"
+        fi
+    # Check for X11 if not Wayland
+    elif [ -S "/tmp/.X11-unix/X0" ]; then
+        export DISPLAY=:0
+        export XDG_SESSION_TYPE=x11
+        # Find XAUTHORITY for X11
+        if [ -z "$XAUTHORITY" ]; then
+            if [ -f "$HOME/.Xauthority" ]; then
+                export XAUTHORITY="$HOME/.Xauthority"
+            else
+                # Try to find it from a running X session
+                XAUTH_FILE=$(find /run/user/$(id -u) -name "xauth_*" 2>/dev/null | head -1)
+                [ -n "$XAUTH_FILE" ] && export XAUTHORITY="$XAUTH_FILE"
+            fi
+        fi
+    fi
+fi
 
-export PATH=./:$HOME/bin:/usr/local/bin:/usr/bin:/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/source/kafka_2.13-3.5.0/bin:$PATH:$HOME/go/bin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PYENV_ROOT="$HOME/.pyenv"
+export BUN_INSTALL="$HOME/.bun"
+
+export PATH="$PATH:./:$HOME/bin:/usr/local/bin:/usr/local/go/bin:$PYENV_ROOT/bin:$HOME/source/kafka_2.13-3.5.0/bin:$HOME/go/bin:$HOME/.npm-global/bin:$BUN_INSTALL/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 export INCLUDE=$HOME/include:$INCLUDE
 

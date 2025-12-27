@@ -1,3 +1,4 @@
+
 "###############################################################################
 "
 " Package Mangement
@@ -8,7 +9,7 @@ set nocompatible
 
 " vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Update command:
@@ -16,7 +17,7 @@ call vundle#begin()
 " :PluginInstall
 
 " core plugins
-Plugin 'gmarik/vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 
 " main plugins
@@ -30,10 +31,10 @@ Plugin 'leafgarland/typescript-vim'          " typescript syntax
 Plugin 'lokaltog/vim-easymotion'             " vim motions on speed
 " Plugin 'ludovicchabant/vim-gutentags'        " auto tag generation
 Plugin 'majutsushi/tagbar'                   " tag side bar
-Plugin 'ngmy/vim-rubocop'                    " rubocop in vim
+"Plugin 'ngmy/vim-rubocop'                    " rubocop in vim
 Plugin 'ntpeters/vim-better-whitespace'      " auto whitespace
-Plugin 'quramy/tsuquyomi'                    " typescript autocomplete
-Plugin 'quramy/vim-js-pretty-template'       " pretty js templates in ts files
+"Plugin 'quramy/tsuquyomi'                    " typescript autocomplete
+"Plugin 'quramy/vim-js-pretty-template'       " pretty js templates in ts files
 Plugin 'rking/ag.vim'                        " ag searching
 Plugin 'scrooloose/nerdtree'                 " nerdtree
 Plugin 'scrooloose/syntastic'                " syntax checking
@@ -44,7 +45,7 @@ Plugin 'szw/vim-maximizer'                   " split maximizer
 Plugin 'tpope/vim-abolish'                   " smart search/replace
 Plugin 'tpope/vim-commentary'                " comment stuff
 Plugin 'tpope/vim-dispatch'                  " background runner
-Plugin 'tpope/vim-endwise'                   " add end's in Ruby
+"Plugin 'tpope/vim-endwise'                   " add end's in Ruby
 Plugin 'tpope/vim-fugitive'                  " git wrapper
 Plugin 'tpope/vim-repeat'                    " repeat plugin commands
 Plugin 'tpope/vim-surround'                  " surround objects
@@ -66,8 +67,8 @@ filetype plugin indent on
 " Settings
 "
 "###############################################################################
-" colorscheme desert
-colorscheme solarized
+"colorscheme desert
+"colorscheme solarized
 let mapleader = ","
 syntax enable
 
@@ -75,6 +76,11 @@ syntax enable
 if &diff
     set diffopt+=iwhite
     syntax off
+
+	highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 endif
 
 set autoindent
@@ -615,3 +621,4 @@ highlight search ctermfg=white ctermbg=3423513
 "   :retab
 "   :%s/\s\+$//
 " endfunction
+"
